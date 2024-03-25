@@ -1,0 +1,6 @@
+{
+  "input": "https://localhost:44392/swagger/v1/swagger.json",
+  "output": "src/app/shared/api",
+  "ignoreTags": ["*"],
+  "ignoreUnusedModels": false
+}

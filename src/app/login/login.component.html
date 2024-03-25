@@ -1,0 +1,36 @@
+<section class="dark w-full h-screen flex flex-col justify-center min-w-96" >
+
+    <div class="flex w-full flex-row items-center justify-center gap-6 text-gray-800">
+      <div class="w-11/12 sm:w-10/12 md:w-9/12 lg:w-7/12 shadow-2xl max-w-2xl">
+        <div class="block rounded-lg drop-shadow-2xl bg-gradient-to-t from-blue-900 to-transparent p-0.5 lg:p-1">
+          <div class="g-0 flex flex-wrap bg-gradient-to-t from-grey-700 to-grey-400 rounded-lg min-h-96">
+
+            <div class="px-2 lg:px-4 xl:px-0 w-full md:w-10/12 mx-auto drop-shadow-2xl">
+              <div class="md:mx-6 py-6 md:p-6 text-center">
+                <img class="mx-auto w-36 lg:w-48" src="assets/images/DTMLogo.png" alt="DTM Logo" />
+                <h1 class="font-extrabold text-2xl lg:text-4xl uppercase text-white mt-4">Portal</h1>
+                <p class="text-gray-100 mt-8 mb-4">Are you a</p>
+
+                  @for (item of portalItems; track item.label) {
+                  <div class="portal-item border-dtm" (click)="handleClick(item)">
+                    <div class="flex flex-col w-10">
+                      <fa-icon [ngClass]="item.cssClass" [icon]="item.faIcon" size="xl"></fa-icon>
+                    </div>
+                    <div class="flex flex-col items-start grow text-left">
+                      <h3 class="portal-name">{{ item.label }}</h3>
+                      <div class="portal-tagline">{{ item.tagline }}</div>
+                    </div>
+                    <div class="arrow mr-2"><fa-icon [icon]="faChevronRight" size="1x"></fa-icon></div>
+                  </div>
+                  }
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="text-gray-300 text-center p-4 text-sm">© Direct Tyre Management Limited {{ getCurrentYear() }}</div>
+</section>
