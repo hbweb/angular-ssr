@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule, provideClientHydration } from "@angular/platform-browser";
@@ -15,21 +15,10 @@ import { environment } from "./environments/environment";
 import { LoginComponent } from "./login/login.component";
 import { ENVIRONMENT } from "./shared/environment.token";
 
-
 @NgModule({
   declarations: [AppComponent, LoginComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    FontAwesomeModule,
-    MatRippleModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  bootstrap: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatInputModule, MatButtonModule, FontAwesomeModule, MatRippleModule, FormsModule, ReactiveFormsModule],
   providers: [
     {
       provide: ENVIRONMENT,
@@ -37,8 +26,8 @@ import { ENVIRONMENT } from "./shared/environment.token";
     },
     { provide: LOCALE_ID, useValue: "en-GB" },
     { provide: DEFAULT_CURRENCY_CODE, useValue: "GBP" },
-    { provide: MAT_DATE_LOCALE, useValue: "en-GB" }
+    { provide: MAT_DATE_LOCALE, useValue: "en-GB" },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
